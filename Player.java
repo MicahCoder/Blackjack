@@ -20,6 +20,49 @@ public class Player {
         }
         return out;
     }
+    private int worthNeeded(){
+        return 21-handValue();
+    }
+    public double getOddsOfWin(){
+        int count = 0;
+        int needed = worthNeeded();
+        if(needed == 1){
+            for(int i = 0; i<deck.getLength();i++){
+                if(deck.get(i).getWorth() == 11){
+                    count++;
+                }
+            }
+        }else{
+            for(int i = 0; i<deck.getLength();i++){
+                if(deck.get(i).getWorth() == needed){
+                    count++;
+                }
+            }
+        }
+        System.out.println("Card needed for blackjack is " + (new Card(needed)).toString());
+        return (double)count/(double)deck.getLength()*100.0;
+    }
+    public double getOddsOfBust(){
+        int count = 0;
+        int needed = worthNeeded();
+        if(needed == 1){
+            for(int i = 0; i<deck.getLength();i++){
+                if(deck.get(i).getWorth() != 11){
+                    count++;
+                }
+            }
+        }else if(needed == 0){
+            return 100.0;
+        }
+        else{
+            for(int i = 0; i<deck.getLength();i++){
+                if(deck.get(i).getWorth() > needed && deck.get(i).getWorth()!=11){
+                    count++;
+                }
+            }
+        }
+        return (double)count/(double)deck.getLength()*100.0;
+    }
     @Override
     public String toString(){
         String out = "";

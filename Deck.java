@@ -12,6 +12,9 @@ public class Deck {
     public void shuffle(){
         Collections.shuffle(deck);
     }
+    public int getLength(){
+        return deck.size();
+    }
     public Card remove(int number){
         Card out = deck.get(number);
         deck.remove(number);

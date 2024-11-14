@@ -28,6 +28,8 @@ public class Main{
             System.out.println("Dealer: " +dealer+" ");
             System.out.println("Hit(h) or Stay(s)?");
             System.out.println("Player: " +player1+" ");
+            System.out.println("Odds of Blackjack:" + player1.getOddsOfWin());
+            System.out.println("Odds of Bust:" + player1.getOddsOfBust());
             if(input.nextLine().equals("h")){
                 player1.hit();
                 playerHit = true;
